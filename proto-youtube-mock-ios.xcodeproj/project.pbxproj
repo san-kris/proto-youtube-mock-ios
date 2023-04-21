@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		AA689F7629F1BC94003B8CFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA689F7529F1BC94003B8CFA /* AppDelegate.swift */; };
 		AA689F7829F1BC94003B8CFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA689F7729F1BC94003B8CFA /* SceneDelegate.swift */; };
-		AA689F7A29F1BC94003B8CFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA689F7929F1BC94003B8CFA /* ViewController.swift */; };
+		AA689F7A29F1BC94003B8CFA /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA689F7929F1BC94003B8CFA /* HomeController.swift */; };
 		AA689F7D29F1BC94003B8CFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA689F7B29F1BC94003B8CFA /* Main.storyboard */; };
 		AA689F8029F1BC94003B8CFA /* proto_youtube_mock_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA689F7E29F1BC94003B8CFA /* proto_youtube_mock_ios.xcdatamodeld */; };
 		AA689F8229F1BC96003B8CFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA689F8129F1BC96003B8CFA /* Assets.xcassets */; };
 		AA689F8529F1BC96003B8CFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA689F8329F1BC96003B8CFA /* LaunchScreen.storyboard */; };
+		AA689F9129F1DA8E003B8CFA /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA689F9029F1DA8E003B8CFA /* VideoCell.swift */; };
+		AA689F9429F2C9EF003B8CFA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA689F9329F2C9EF003B8CFA /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA689F7229F1BC94003B8CFA /* proto-youtube-mock-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "proto-youtube-mock-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA689F7529F1BC94003B8CFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA689F7729F1BC94003B8CFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AA689F7929F1BC94003B8CFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA689F7929F1BC94003B8CFA /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		AA689F7C29F1BC94003B8CFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA689F7F29F1BC94003B8CFA /* proto_youtube_mock_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = proto_youtube_mock_ios.xcdatamodel; sourceTree = "<group>"; };
 		AA689F8129F1BC96003B8CFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA689F8429F1BC96003B8CFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA689F8629F1BC96003B8CFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA689F9029F1DA8E003B8CFA /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		AA689F9329F2C9EF003B8CFA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +62,10 @@
 		AA689F7429F1BC94003B8CFA /* proto-youtube-mock-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AA689F9229F2C9C8003B8CFA /* Helper */,
+				AA689F8C29F1BCCE003B8CFA /* Screens */,
 				AA689F7529F1BC94003B8CFA /* AppDelegate.swift */,
 				AA689F7729F1BC94003B8CFA /* SceneDelegate.swift */,
-				AA689F7929F1BC94003B8CFA /* ViewController.swift */,
 				AA689F7B29F1BC94003B8CFA /* Main.storyboard */,
 				AA689F8129F1BC96003B8CFA /* Assets.xcassets */,
 				AA689F8329F1BC96003B8CFA /* LaunchScreen.storyboard */,
@@ -68,6 +73,47 @@
 				AA689F7E29F1BC94003B8CFA /* proto_youtube_mock_ios.xcdatamodeld */,
 			);
 			path = "proto-youtube-mock-ios";
+			sourceTree = "<group>";
+		};
+		AA689F8C29F1BCCE003B8CFA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				AA689F8D29F1BCD7003B8CFA /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		AA689F8D29F1BCD7003B8CFA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AA689F8F29F1BCF1003B8CFA /* Controller */,
+				AA689F8E29F1BCE5003B8CFA /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AA689F8E29F1BCE5003B8CFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA689F9029F1DA8E003B8CFA /* VideoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AA689F8F29F1BCF1003B8CFA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA689F7929F1BC94003B8CFA /* HomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AA689F9229F2C9C8003B8CFA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AA689F9329F2C9EF003B8CFA /* String+Extension.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA689F7A29F1BC94003B8CFA /* ViewController.swift in Sources */,
+				AA689F9129F1DA8E003B8CFA /* VideoCell.swift in Sources */,
+				AA689F7A29F1BC94003B8CFA /* HomeController.swift in Sources */,
 				AA689F7629F1BC94003B8CFA /* AppDelegate.swift in Sources */,
 				AA689F8029F1BC94003B8CFA /* proto_youtube_mock_ios.xcdatamodeld in Sources */,
+				AA689F9429F2C9EF003B8CFA /* String+Extension.swift in Sources */,
 				AA689F7829F1BC94003B8CFA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
