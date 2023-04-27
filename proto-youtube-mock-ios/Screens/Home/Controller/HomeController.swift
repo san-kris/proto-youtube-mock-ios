@@ -11,6 +11,19 @@ class HomeController: UICollectionViewController {
 
     let cellID = "cellID"
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return UIStatusBarStyle.darkContent
+    }
+    
+    let menuBarView: MenuBar = {
+        let view = MenuBar()
+        return view
+    }()
+
+    
+        
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -18,14 +31,62 @@ class HomeController: UICollectionViewController {
         // Register a Cell class to use and associate it with a string
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: cellID)
         
+        setupNavBar()
+        
+        setupMenuBar()
         setupView()
+    }
+    
+    fileprivate func setupNavBar() {
+        let navLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        navLabel.text = "Hello"
+        navLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        navLabel.textColor = .red
+        navLabel.backgroundColor = .green
+        navigationItem.titleView = navLabel
+        
+        
+         navigationItem.rightBarButtonItems = []
+        if let moreOptionsImage = UIImage(systemName: "line.3.horizontal")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate){
+            let moreOptinsBarButtonItem = UIBarButtonItem(image: moreOptionsImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleMoreOptionsBarButton))
+            navigationItem.rightBarButtonItems?.append(moreOptinsBarButtonItem)
+        }
+        
+        if let searchImage = UIImage(systemName: "magnifyingglass")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate){
+            let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleSearchBarButton))
+            navigationItem.rightBarButtonItems?.append(searchBarButtonItem)
+        }
+        
+        
+        
+    }
+    
+    @objc func handleSearchBarButton (sender: UIBarButtonItem){
+        print("Search icon clicked: \(sender)")
+    }
+    
+    @objc func handleMoreOptionsBarButton (sender: UIBarButtonItem){
+        print("More icon clicked: \(sender)")
+    }
+
+
+    fileprivate func setupMenuBar() {
+        view.addSubview(menuBarView)
+        menuBarView.translatesAutoresizingMaskIntoConstraints = false
+        menuBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        menuBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        menuBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        menuBarView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func setupView() -> Void {
         navigationItem.title = "Home"
         collectionView.alwaysBounceVertical = true
         
-        
+        // move the start of the collectioon view down by 50 points using content inset
+        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        // move the scrollbar 50 pts down by specifying scroll inset
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
     }
     
     // method is called once when orientation changes
@@ -33,8 +94,13 @@ class HomeController: UICollectionViewController {
         super.viewWillTransition(to: size, with: coordinator)
         print("viewWillTransition called")
         collectionView.reloadData()
-//        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {return}
-//        flowLayout.invalidateLayout()
+        // reload method calls cellforitemat for all cells
+        // invalidate layout does not call cell for item at method for all cells
+        
+        menuBarView.menuBarCollection.reloadData()
+
+        // guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {return}
+        // flowLayout.invalidateLayout()
     }
     
 
