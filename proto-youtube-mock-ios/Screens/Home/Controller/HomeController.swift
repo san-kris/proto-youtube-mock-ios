@@ -62,11 +62,27 @@ class HomeController: UICollectionViewController {
     }
     
     @objc func handleSearchBarButton (sender: UIBarButtonItem){
-        print("Search icon clicked: \(sender)")
+        print("Search icon clicked")
+        
     }
     
+    lazy var settingsMenu: MoreSettingsView = {
+        let view = MoreSettingsView()
+        view.homeController = self
+        return view
+    }()
+    
     @objc func handleMoreOptionsBarButton (sender: UIBarButtonItem){
-        print("More icon clicked: \(sender)")
+        print("More icon clicked")
+        
+        settingsMenu.showSettings()
+    }
+    
+    func showDummyViewController(name: String) -> Void {
+        let vc = UIViewController()
+        vc.navigationItem.title = name
+        vc.view.backgroundColor = .red
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 
